@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyAdmin } from "../utils/VeriftToken.js";
-import { createRoom, deleteRoom, getRoom, getRooms, updatedRoom } from "../controllers/room.js";
+import { createRoom, deleteRoom, getRoom, getRooms, updateRoomAvailable, updatedRoom } from "../controllers/room.js";
 
 const router = express.Router();
 
@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/:hotelid",verifyAdmin, createRoom)
 //update
 router.put("/:id",verifyAdmin, updatedRoom)
+router.put("/availablity/:id", updateRoomAvailable)
 //delete
 router.delete("/:id/:hotelid",verifyAdmin,deleteRoom)
 //get specific hotel
