@@ -27,14 +27,7 @@ const connect = async () => {
 mongoose.connection.on("disconnected", () => {
   console.log("Mongodb Disconnected");
 });
-// const connect = async () => {
-//   try {
-//     await mongoose.connect(process.env.MONGO);
-//     console.log("Connected To MongoDB.");
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+
 connect();
 
 app.use(cookieParser())
