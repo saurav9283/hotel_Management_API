@@ -1,6 +1,15 @@
 import express from "express";
 import Hotel from "../models/Hotel.js";
-import { countByCity, countByType, createHotel, deleteHotel, getHotel, getHotels, gethotelRooms, updatedHotel } from "../controllers/hotel.js";
+import {
+  countByCity,
+  countByType,
+  createHotel,
+  deleteHotel,
+  getHotel,
+  getHotels,
+  gethotelRooms,
+  updatedHotel,
+} from "../controllers/hotel.js";
 import { verifyAdmin } from "../utils/VeriftToken.js";
 
 const router = express.Router();
@@ -18,8 +27,13 @@ const router = express.Router();
 // router.get("/countByType", countByType)
 // router.get("/room/:id",gethotelRooms)
 // router.get("/:id",getHotel)
-router.get("/", async(req,res)=>{
-    res.send("I am inside hotel  api/hotels")
-})
+router.get("/", async (req, res) => {
+  try {
+    const hotels = await Hotel.find({});
+    res.status(200).json(hotels);
+  } catch (err) {
+    console.log("error");
+  }
+});
 
 export default router;
