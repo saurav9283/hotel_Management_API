@@ -12,21 +12,30 @@ const app = express();
 app.use(cors());
 dotenv.config();
 
+// const connect = async () => {
+//   try {
+//     await mongoose.connect(process.env.MONGO, {
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true,
+//     });
+//     console.log("Connected to MongoDB!");
+//   } catch (error) {
+//     console.error("Error connecting to MongoDB:", error);
+//   }
+// };
+
+// mongoose.connection.on("disconnected", () => {
+//   console.log("Mongodb Disconnected");
+// });
 const connect = async () => {
   try {
-    await mongoose.connect(process.env.MONGO, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Connected to MongoDB!");
+    await mongoose.connect(process.env.MONGO);
+    console.log("Connected To MongoDB.");
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    throw error;
   }
 };
-
-mongoose.connection.on("disconnected", () => {
-  console.log("Mongodb Disconnected");
-});
+connect();
 
 app.use(cookieParser())
 app.use(express.json())
@@ -35,7 +44,6 @@ app.use("/api/auth" , authRoute)
 app.use("/api/users" , usersRoute)
 app.use("/api/hotels" , hotelsRoute)
 app.use("/api/rooms" , roomsRoute)
-// app.use("/api/myhotels" , myhotel)
 
 app.use((err,req, res, next) =>{
   const errorStatus = err.message || 500
@@ -54,6 +62,5 @@ app.get("/" , (req, res) =>{
 })
 
 app.listen(8000, () => {
-  connect();
   console.log("Connected to Backend!");
 });
