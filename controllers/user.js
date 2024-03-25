@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 
+
 export const updatedUsers = async (req, res, next) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
