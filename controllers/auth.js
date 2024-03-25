@@ -65,7 +65,7 @@ export const register = async (req, res, next) => {
       htmlContent
     );
 
-    res.status(201).send({ mag: "User has been created!" });
+    res.status(201).send({ msg: "User has been created!" });
   } catch (error) {
     console.log("ERROR", error);
     res.status(500).send({ msg: "Registration failed!" });
