@@ -116,3 +116,15 @@ export const gethotelRooms = async (req,res,next)=>{
     next(error)
   }
 }
+
+export default {
+  createHotel,
+  updatedHotel,
+  deleteHotel,
+  getHotel,
+  getHotelsByQuery,
+  getHotels,
+  countByCity,
+  countByType,
+  gethotelRooms,
+};
