@@ -117,14 +117,3 @@ export const gethotelRooms = async (req,res,next)=>{
   }
 }
 
-export default {
-  createHotel,
-  updatedHotel,
-  deleteHotel,
-  getHotel,
-  getHotelsByQuery,
-  getHotels,
-  countByCity,
-  countByType,
-  gethotelRooms,
-};
